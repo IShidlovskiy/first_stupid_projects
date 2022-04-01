@@ -18,7 +18,8 @@ def transfer(name1, name2, sum):
 def income(p):
     for name in bank:
         if bank[name] > 0:
-            bank[name] *= ((100 + p) / 100)
+            newBalance = bank[name] * (100 + p) / 100
+            bank[name] = int(newBalance)
 
 
 bank = {}
@@ -34,19 +35,19 @@ for i in range (0, numcommands):
 
     elif command == 'DEPOSIT':
         if args[0] not in bank:
-            bank[args[0]] = 0
+            bank[args[0]] = int(0)
         deposit(args[0], int(args[1]))
 
     elif command == 'WITHDRAW':
         if args[0] not in bank:
-            bank[args[0]] = 0
+            bank[args[0]] = int(0)
         withdraw(args[0], int(args[1]))
 
     elif command == 'TRANSFER':
         if args[0] not in bank:
-            bank[args[0]] = 0
+            bank[args[0]] = int(0)
         if args[1] not in bank:
-            bank[args[1]] = 0
+            bank[args[1]] = int(0)
         transfer(args[0], args[1], int(args[2]))
 
     elif command == 'INCOME':
